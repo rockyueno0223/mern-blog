@@ -1,10 +1,7 @@
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react"
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
-
-type FormDataType = {
-  [key: string]: string;
-};
+import { FormDataType } from "../types/types";
 
 const SignUp = () => {
   const navigate = useNavigate();
