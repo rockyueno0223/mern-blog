@@ -4,6 +4,7 @@ export interface User {
   email: string;
   password: string;
   profilePicture: string;
+  isAdmin: boolean;
 }
 
 export type FormDataType = {
