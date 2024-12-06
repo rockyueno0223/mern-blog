@@ -15,6 +15,7 @@ export interface Post {
   category: string;
   image: string;
   slug: string;
+  createdAt: string;
   updatedAt: string;
 }
 
