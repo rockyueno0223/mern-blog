@@ -5,6 +5,7 @@ export interface User {
   password: string;
   profilePicture: string;
   isAdmin: boolean;
+  createdAt: string;
 }
 
 export interface Post {
