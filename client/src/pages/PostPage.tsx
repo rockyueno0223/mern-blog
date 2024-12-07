@@ -2,6 +2,7 @@ import { Button, Spinner } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import { Post } from "../types/types";
+import CallToAction from "../components/CallToAction";
 
 const PostPage = () => {
   const { postSlug } = useParams();
@@ -67,7 +68,10 @@ const PostPage = () => {
               {post && (post.content.length / 1000).toFixed(0)} mins read
             </span>
           </div>
-          <div dangerouslySetInnerHTML={{__html: post?.content || ""}} className="p-3 max-w-2xl mx-auto w-full post-content"></div>
+          <div dangerouslySetInnerHTML={{ __html: post?.content || "" }} className="p-3 max-w-2xl mx-auto w-full post-content"></div>
+          <div className="max-w-4xl mx-auto w-full">
+            <CallToAction />
+          </div>
       </main>
     )
   )
