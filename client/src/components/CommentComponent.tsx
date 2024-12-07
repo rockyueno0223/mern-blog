@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import { Comment, User } from "../types/types"
 import moment from "moment";
+import { FaThumbsUp } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 interface CommentComponentProps {
   comment: Comment;
+  onLike: (commentId: string) => void;
 }
 
-const CommentComponent: React.FC<CommentComponentProps> = ({ comment }) => {
-  const [user, setUser] = useState<Omit<User, "password">>();
-  console.log(user);
+const CommentComponent: React.FC<CommentComponentProps> = ({ comment, onLike }) => {
+  const { currentUser } = useSelector((state: RootState) => state.user);
 
+  const [user, setUser] = useState<Omit<User, "password">>();
 
   useEffect(() => {
     const getUser = async () => {
@@ -47,6 +51,20 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ comment }) => {
         <p className="text-gray-500 mb-2">
           {comment.content}
         </p>
+        <div className="flex items-center pt-2 text-xs border-t dark:border-gray-700 max-w-fit gap-2">
+          <button
+            type="button"
+            onClick={() => onLike(comment._id)}
+            className={`text-gray-400 hover:text-blue-500 ${currentUser && comment.likes.includes(currentUser._id) && '!text-blue-500'}`}
+          >
+            <FaThumbsUp className="text-sm" />
+          </button>
+          <p className="text-gray-400">
+            {comment.numberOfLikes > 0 &&
+              comment.numberOfLikes + " " + (comment.numberOfLikes === 1 ? "like" : "likes")
+            }
+          </p>
+        </div>
       </div>
     </div>
   )

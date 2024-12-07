@@ -24,7 +24,7 @@ export interface Comment {
   content: string;
   postId: string;
   userId: string;
-  likes: Array<any>;
+  likes: Array<string>;
   numberOfLikes: number;
   createdAt: string;
 }
