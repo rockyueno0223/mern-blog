@@ -19,6 +19,16 @@ export interface Post {
   updatedAt: string;
 }
 
+export interface Comment {
+  _id: string;
+  content: string;
+  postId: string;
+  userId: string;
+  likes: Array<any>;
+  numberOfLikes: number;
+  createdAt: string;
+}
+
 export type FormDataType = {
   [key: string]: string;
 };
